@@ -28,6 +28,8 @@ WORKDIR /usr/src/app
 # Copia os arquivos de construção da etapa anterior
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/node_modules ./node_modules
+COPY --from=build /usr/src/app/package.json ./
+COPY --from=build /usr/src/app/tsconfig.json ./
 
 # Expõe a porta da aplicação
 EXPOSE 4010
