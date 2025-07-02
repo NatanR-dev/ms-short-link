@@ -1,0 +1,107 @@
+// Using Rest Client Extension 
+   // > code --install-extension humao.rest-client
+      // OR > Ctrl+Shift+X > humao.rest-client
+
+@acessToken = <acessToken>
+
+### Create user
+POST http://localhost:3000/user
+Content-Type: application/json
+
+{
+  "name": "Natan Ribeiro",
+  "email": "natan2@example.com",
+  "password": "123456"
+}
+
+### Login (Auth)
+POST http://localhost:3001/auth
+Content-Type: application/json
+
+{
+  "email": "natan@example.com",
+  "password": "123456" 
+}
+
+### Get user by ID (authenticated)
+GET http://localhost:3000/user/1
+Authorization: Bearer {{acessToken}}
+
+### Create short link (authenticated)
+POST http://localhost:3000/short-link
+Content-Type: application/json
+Authorization: Bearer {{acessToken}}
+
+{
+  "targetLink": "https://www.google.com.br"
+}
+
+### List user short links (authenticated)
+GET http://localhost:3000/short-link/user/1
+Authorization: Bearer {{acessToken}}
+
+### Update short link (authenticated)
+# Replace :id with the short link id
+PUT http://localhost:3000/short-link/1 
+Content-Type: application/json
+Authorization: Bearer {{acessToken}}
+
+{
+  "targetLink": "https://www.github.com"
+}
+
+### Delete short link (authenticated)
+# Replace :id with the short link id
+DELETE http://localhost:3000/short-link/1 
+Authorization: Bearer {{acessToken}}
+
+### Redirect short link (public)
+# Replace :shortenedLink with the shortened link code
+GET http://localhost:3000/:shortenedLink
+
+### Example user creation response
+# (for reference only, not a request)
+# {
+#   "id": 1,
+#   "name": "Natan Ribeiro",
+#   "email": "natan@example.com",
+#   "shortenedLinks": [],
+#   "password": "$2b$10$...",
+#   "createdAt": "2025-07-01T11:57:01.324Z",
+#   "updatedAt": "2025-07-01T11:57:01.324Z",
+#   "deletedAt": null
+# }
+
+### Example login response
+# {
+#   "acessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6...",
+#   "userid": "1"
+# }
+
+### Example short link creation response
+# {
+#   "id": 1,
+#   "targetLink": "https://www.google.com.br",
+#   "shortenedLink": "http://localhost:3000/abc123",
+#   "userId": 1,
+#   "count": 0,
+#   "createdAt": "2025-07-01T11:57:01.331Z",
+#   "updatedAt": "2025-07-01T11:57:01.331Z",
+#   "deletedAt": null
+# }
+
+### Example short links listing response
+# {
+#   "shortenedLinks": [
+#     {
+#       "id": 1,
+#       "targetLink": "https://www.google.com.br",
+#       "shortenedLink": "http://localhost:3000/abc123",
+#       "userId": 1,
+#       "count": 0,
+#       "createdAt": "2025-07-01T11:57:01.333Z",
+#       "updatedAt": "2025-07-01T11:57:01.333Z",
+#       "deletedAt": null
+#     }
+#   ]
+# } 
