@@ -15,7 +15,7 @@
 
 ## Como Usar?
 
-Para executar a aplicação, é necessário ter o Docker instalado e configurar algumas variáveis de ambiente. Para facilitar esse processo, deixei o arquivo `.env.example`, que, ao ser renomeado, está pronto para uso. Utilizamos uma instância gratuita do [NeonDB](https://neon.tech/) como banco de dados. Após criar uma conta no Neon, gere a string de conexão e adicione-a à variável `DB_URL` no arquivo `.env`. No entanto, é importante ressaltar que, em ambientes de produção, essa prática não é recomendada. 
+Para executar a aplicação, é necessário ter o Docker instalado e configurar algumas variáveis de ambiente. Para facilitar esse processo, foi incluído o arquivo `.env.example`, que, ao ser renomeado, está pronto para uso. Utilizamos uma instância gratuita do [NeonDB](https://neon.tech/) como banco de dados. Após criar uma conta no Neon, gere a string de conexão e adicione-a à variável `DB_URL` no arquivo `.env`. No entanto, é importante ressaltar que, em ambientes de produção, essa prática não é recomendada. 
 
 Após realizar essa configuração inicial, basta executar o seguinte comando:
 
